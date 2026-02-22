@@ -11,6 +11,11 @@
             @foreach($protocols as $protocol)
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-6 text-gray-900">
+                    <div class="mb-6 text-right">
+                        <a href="{{ route('protocols.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow">
+                            ＋ 新しいプロトコールを追加
+                        </a>
+                    </div>
                     <div class="flex justify-between items-center mb-2">
                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
                             {{ $protocol->category }}

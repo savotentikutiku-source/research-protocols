@@ -25,5 +25,8 @@ use App\Http\Controllers\ProtocolController; // ← 上の方に追加
 // ログインしている人だけが見られるグループの中に書くのがおすすめ
 Route::middleware('auth')->group(function () {
     Route::get('/protocols', [ProtocolController::class, 'index'])->name('protocols.index');
-    // ... 他の設定があればそのままでOK
+    
+    // ↓この2行を追加します！
+    Route::get('/protocols/create', [ProtocolController::class, 'create'])->name('protocols.create');
+    Route::post('/protocols', [ProtocolController::class, 'store'])->name('protocols.store');
 });
