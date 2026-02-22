@@ -4,7 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    // welcome画面（巨大ロゴ）をやめて、ログイン画面へ強制移動！
+    return redirect('/login');
 });
 
 Route::get('/dashboard', function () {
