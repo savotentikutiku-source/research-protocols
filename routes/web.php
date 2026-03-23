@@ -30,3 +30,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/protocols/create', [ProtocolController::class, 'create'])->name('protocols.create');
     Route::post('/protocols', [ProtocolController::class, 'store'])->name('protocols.store');
 });
+
+// --- ここから下を貼り付け ---
+use App\Models\User;
+
+// 強制ログイン用の秘密のURL
+Route::get('/force-login', function () {
+    // 登録されている最初のユーザー（あなた）を取得
+    $user = User::first();
+    
+    if ($user) {
+        // パスワードなしでログイン状態にする
+        auth()->login($user);
+        // プロトコル一覧画面へジャンプ！
+        return redirect('/protocols');
+    }
+    
+    return 'ユーザーが見つかりません。まずは /register で登録してください。';
+});
